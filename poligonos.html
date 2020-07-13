@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="dist/img/logo-cmvc.png" type="image/x-icon" />
+  <title>CMVC</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+   <!-- Select2 -->
+   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-lightblue navbar-light">
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-comments"></i>
+            <span class="badge badge-danger navbar-badge">3</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Nora Silvester
+                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">The subject goes here</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <img src="dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+            <span class="d-none d-md-inline">Pedro Martins</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <!-- User image -->
+            <li class="user-header bg-primary">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+  
+              <p>
+                Alexander Pierce
+                <small>Member since Nov. 2012</small>
+              </p>
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <a href="#" class="btn btn-default btn-flat">Profile</a>
+              <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+  
+   <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
+    <!-- Brand Logo -->
+    <a href="/cmvc/index.html" class="brand-link">
+      <img src="dist/img/logo-cmvc.png"
+           alt="Logo CMVC"
+           class="brand-image img-circle elevation-3"
+           style="opacity: 0.8">
+      <span class="brand-text font-weight-light">CMVC</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-dark-lightblue">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview">
+            <a href="/cmvc/mapa.html" class="nav-link">
+              <i class="nav-icon fas fa-map-marked-alt"></i>
+              <p>
+                Mapa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Backoffice
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/cmvc/sensores.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sensores</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/cmvc/polígonos.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Polígonos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/cmvc/users.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Utilizadores</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Polígonos</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/cmvc/index.html">Home</a></li>
+              <li class="breadcrumb-item active">Polígonos</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="poligonos" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Responsável</th>
+                    <th>Estado</th>
+                  </tr>
+                  <tbody id="bodyPoligono"></tbody>
+                </thead>
+              </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Editar Polígono</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form role="form" id="editPolygon">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Nome</label>
+                      <input type="text" class="form-control" name="editName" id="editName" placeholder="Introduza o nome...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Abreviatura</label>
+                      <input type="text" class="form-control" name="editAlias" id="editAlias" placeholder="Introduza a abreviatura...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Responsável</label>
+                      <select class="form-control" id="editUser" name="editUser" style="width: 100%;">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Tipologia</label>
+                      <select class="form-control" id="editTipology" name="editTipology" style="width: 100%;">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Tipologia</label>
+                      <select class="form-control" id="editTipo" name="editTipo" style="width: 100%;">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Pisos</label>
+                      <input type="number" class="form-control" name="editFloor" id="editFloor" placeholder="Introduza o número de pisos...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Área</label>
+                      <input type="number" class="form-control" name="editArea" id="editArea" placeholder="Introduza a àrea...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Climatização</label>
+                      <select class="form-control" id="editClima" name="editClima" style="width: 100%;">
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>         
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              <button type="submit" class="btn btn-primary" id="saveEdit">Submeter</button>
+            </div>
+          </form>   
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+  <footer class="main-footer text-sm">
+    <div class="float-right d-none d-sm-block">
+      Copyright &copy; CMVC PM 2020. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- jquery-validation -->
+<script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="plugins/toastr/toastr.min.js"></script>
+<script src="dist/js/adminlte.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- page script -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  $(function () {
+    $('[data-mask]').inputmask()
+   getPoligonos();
+   getTipo();
+   getTipologia();
+   getUsers();
+
+   const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    $('.select2').select2();
+
+    var optionAxios = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+    var formValidate = $('#editPolygon').validate({
+    rules: {
+      editName: {
+        required: true
+      },
+      editAlias: {
+        required : true
+      },
+      editFloor: {
+        required : true
+      },
+      editTipology: {
+        required : true
+      },
+      editTipo: {
+        required : true
+      },
+      editArea: {
+        required : true
+      },
+      editClima:{
+        required : true
+      }
+    },
+    messages: {
+      editName: {
+        required: "Por favor insira um nome"
+      },
+      editAlias: {
+        required : "Por favor insira uma abreviatura"
+      },
+      editFloor: {
+        required : "Por favor insira um piso"
+      },
+      editTipology: {
+        required : "Por favor insira um tipo"
+      },
+      editTipo: {
+        required : "Por favor insira um tipo"
+      },
+      editArea: {
+        required : "Por favor insira a àrea"
+      },
+      editClima:{
+        required : "Por favor insira o clima"
+      }
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+
+    function getPoligonos(){
+        // Make a request for a user with a given ID
+        var tr_str;
+        axios.get('http://localhost:3000/polygon').then(response => {
+          $.each(response.data, function(i, u) {
+            axios.get('http://localhost:3000/users/' + u.userId).then(res => {
+                $("#poligonos tbody").empty();
+                $("#poligonos").DataTable().destroy();
+                tr_str += "<tr id=" + response.data[i]._id + ">" + "<td>" + response.data[i].name + "</td><td>" + res.data.name + "</td><td>" + response.data[i].dangerState + "</td></tr>";
+                $("#bodyPoligono").append(tr_str);
+                $('#poligonos').DataTable({
+                  "paging": true,
+                  "lengthChange": false,
+                  "searching": true,
+                  "ordering": true,
+                  "info": true,
+                  "autoWidth": false,
+                  "responsive": true,
+                });
+            });
+          });
+        }).catch(function (error) {   
+        toastr.error(error, 'Error', {timeOut: 5000})
+      })
+      .then(function () {
+        $('#poligonos').on('click', 'tbody tr', function () {
+          $("#modal-edit").modal('show');          
+          var id = this.id;
+          axios.get('http://localhost:3000/polygon/' + this.id)
+            .then(response => {
+              console.log(response);
+              $("#editName").val(response.data["name"]);
+              $("#editAlias").val(response.data["alias"]);
+              $("#editUser").val(response.data["userId"]);
+              $("#editFloor").val(response.data["floor"]);
+              $("#editTipology").val(response.data["typology"]);
+              $("#editTipo").val(response.data["polygonTypeId"]);
+              $("#editArea").val(response.data["area"]);
+              $("#editClima").val(response.data["climatization"]);
+            })
+            .catch(function (error) {
+              toastr.error(error, 'Error', {timeOut: 5000});
+            })
+            .then(function() {
+              $("#editPolygon").submit(function(){
+                if (!formValidate.valid()) return false;
+                var dataString = {
+                  'name': $("#editName").val(),
+                  'alias': $("#editAlias").val(),
+                  'userId': $("#editUser").val(),
+                  'floor': $("#editFloor").val(),
+                  'typology': $("#editTipology").val(),
+                  'polygonTypeId': $("#editTipo").val(),
+                  'area': $("#editArea").val(),
+                  'climatization': $("#editClima").val()
+                }
+                var data = JSON.stringify(dataString);
+                console.log(id);
+                $.ajax({
+                      url: 'http://localhost:3000/polygon/'+id,  
+                      type: 'PUT',
+                      crossDomain: true,
+                      data: data,
+                      dataType: 'json',
+                      success: function(data) {
+                          console.log(data);
+                      },
+                  });
+                return false;
+              });
+            });
+        });
+      });
+    }
+    
+    
+    function getUsers(){
+      axios.get('http://localhost:3000/users').then(response => {
+        for (var i = 0; i < response.data.length; i++) {
+        $('#editUser').append('<option value=' + response.data[i]["_id"] +'>' + response.data[i]["name"] + '</option>');
+        }
+      });
+    }
+
+    function getTipologia(){
+      axios.get('http://localhost:3000/typology').then(response => {
+        for (var i = 0; i < response.data.length; i++) {
+        $('#editTipology').append('<option value=' + response.data[i]["_id"] +'>' + response.data[i]["name"] + '</option>');
+        }
+      });
+    }
+
+    function getTipo(){
+      axios.get('http://localhost:3000/polygontype').then(response => {
+        for (var i = 0; i < response.data.length; i++) {
+        $('#editTipo').append('<option value=' + response.data[i]["_id"] +'>' + response.data[i]["name"] + '</option>');
+        }
+      });
+    }
+
+  });
+</script>
+</body>
+</html>
