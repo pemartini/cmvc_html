@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="dist/img/logo-cmvc.png" type="image/x-icon" />
+    <title>CMVC</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css" />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="hold-transition sidebar-mini sidebar-collapse">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav
+        class="main-header navbar navbar-expand navbar-lightblue navbar-light"
+      >
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"
+                >15 Notifications</span
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Notifications</a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <img
+                src="dist/img/user2-160x160.jpg"
+                class="user-image img-circle elevation-2"
+                alt="User Image"
+              />
+              <span class="d-none d-md-inline">Pedro Martins</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <!-- User image -->
+              <li class="user-header bg-primary">
+                <img
+                  src="dist/img/user2-160x160.jpg"
+                  class="img-circle elevation-2"
+                  alt="User Image"
+                />
+
+                <p>
+                  Pedro Martins
+                  <small>Membro desde Nov. 2020</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <a href="/cmvc/perfil.html" class="btn btn-default btn-flat"
+                  >Perfil</a
+                >
+                <button
+                  class="btn btn-default btn-flat float-right"
+                  id="signout"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
+        <!-- Brand Logo -->
+        <a href="/cmvc/index.html" class="brand-link">
+          <img
+            src="dist/img/logo-cmvc.png"
+            alt="Logo CMVC"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">CMVC</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar sidebar-dark-lightblue">
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+              <li class="nav-item has-treeview">
+                <a href="/cmvc/mapa.html" class="nav-link">
+                  <i class="nav-icon fas fa-map-marked-alt"></i>
+                  <p>
+                    Mapa
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Backoffice
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/cmvc/sensores.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sensores</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/cmvc/poligonos.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Polígonos</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/cmvc/users.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Utilizadores</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Perfil</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href="/cmvc/mapa.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">Perfil</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                  <div class="card-body box-profile">
+                    <div class="text-center">
+                      <img
+                        class="profile-user-img img-fluid img-circle"
+                        src="dist/img/user4-128x128.jpg"
+                        alt="User profile picture"
+                      />
+                    </div>
+
+                    <h3 class="profile-username text-center">Pedro Martins</h3>
+
+                    <p class="text-muted text-center">mpe@estg.ipvc.pt</p>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+              <div class="col-md-9">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Editar Perfil</h3>
+                  </div>
+                  <div class="card-body">
+                    <form role="form">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="editEmail">Email</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="editEmail"
+                            placeholder="Insira o email"
+                            disabled
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="editContact">Contacto</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="editContact"
+                            placeholder="Contacto telefónico"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Palavra-passe</label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="Password"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="newpassword"
+                            >Repita a palavra-passe</label
+                          >
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="newpassword"
+                            placeholder="Password"
+                          />
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                        <button
+                          type="submit"
+                          id="submit"
+                          class="btn btn-primary"
+                        >
+                          Editar
+                        </button>
+                    </form>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <footer class="main-footer text-sm">
+        <div class="float-right d-none d-sm-block">
+          Copyright &copy; CMVC PM 2020. All rights reserved.
+        </div>
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="plugins/toastr/toastr.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>
+
+<script>
+  getUser("5f0c36d629f49f52dd0bf23f");
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  function getUser(id) {
+      console.log(id);
+      axios.defaults.headers.post["Content-Type"]="application/json";
+
+    axios.get("http://localhost:3000/users/5f0c36d629f49f52dd0bf23f").then(response => {
+        if (response) {
+            console.log(response);
+            $("#editEmail").val(response.data.email);
+            $("#editName").val(response.data.name);
+            $("#editContact").val(response.data.contact);
+        }
+      })
+      .catch(function(error) {
+        toastr.error(error, "Error", { timeOut: 5000 });
+      });
+  }
+</script>
