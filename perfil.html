@@ -227,14 +227,25 @@
                     <h3 class="card-title">Editar Perfil</h3>
                   </div>
                   <div class="card-body">
-                    <form role="form">
+                    <form role="form" id="editUser">
                       <div class="card-body">
+                        <div class="form-group">
+                          <label for="editName">Nome</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="editName"
+                            id="editName"
+                            placeholder="Insira o nome"
+                          />
+                        </div>
                         <div class="form-group">
                           <label for="editEmail">Email</label>
                           <input
                             type="email"
                             class="form-control"
                             id="editEmail"
+                            name="editEmail"
                             placeholder="Insira o email"
                             disabled
                           />
@@ -245,15 +256,17 @@
                             type="number"
                             class="form-control"
                             id="editContact"
+                            name="editContact"
                             placeholder="Contacto telefónico"
                           />
                         </div>
                         <div class="form-group">
-                          <label for="password">Palavra-passe</label>
+                          <label for="password">Nova Palavra-passe</label>
                           <input
                             type="password"
                             class="form-control"
                             id="password"
+                            name="password"
                             placeholder="Password"
                           />
                         </div>
@@ -265,18 +278,15 @@
                             type="password"
                             class="form-control"
                             id="newpassword"
+                            name="newpassword"
                             placeholder="Password"
                           />
                         </div>
                       </div>
                       <!-- /.card-body -->
-                        <button
-                          type="submit"
-                          id="submit"
-                          class="btn btn-primary"
-                        >
-                          Editar
-                        </button>
+                      <button type="submit" id="submit" class="btn btn-primary">
+                        Editar
+                      </button>
                     </form>
                   </div>
                   <!-- /.card-body -->
@@ -314,15 +324,57 @@
     <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="plugins/toastr/toastr.min.js"></script>
     <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <!-- jquery-validation -->
+    <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="plugins/jquery-validation/additional-methods.min.js"></script>
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
 
 <script>
+  //ALTERAR ID PRA USER
   getUser("5f0c36d629f49f52dd0bf23f");
+
+  var formValidate = $("#editUser").validate({
+    rules: {
+      editName: {
+        required: true
+      },
+      editContact: {
+        required: true,
+        minlength: 9,
+        maxlength: 9
+      },
+      newpassword: {
+        equalTo: "#password"
+      }
+    },
+    messages: {
+      editName: {
+        required: "Por favor insira um nome"
+      },
+      editContact: {
+        required: "Por favor insira um contacto",
+        minlength: "Número com 9 dígitos",
+        maxlength: "Número com 9 dígitos"
+      },
+      newpassword: {
+        equalTo: "Palavra-passe não corresponde"
+      }
+    },
+    errorElement: "span",
+    errorPlacement: function(error, element) {
+      error.addClass("invalid-feedback");
+      element.closest(".form-group").append(error);
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).addClass("is-invalid");
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).removeClass("is-invalid");
+    }
+  });
 
   const Toast = Swal.mixin({
     toast: true,
@@ -332,19 +384,36 @@
   });
 
   function getUser(id) {
-      console.log(id);
-      axios.defaults.headers.post["Content-Type"]="application/json";
+    axios.defaults.headers.post["Content-Type"] = "application/json";
 
-    axios.get("http://localhost:3000/users/5f0c36d629f49f52dd0bf23f").then(response => {
+    axios
+      .get("http://localhost:3000/users/5f0c36d629f49f52dd0bf23f")
+      .then(response => {
         if (response) {
-            console.log(response);
-            $("#editEmail").val(response.data.email);
-            $("#editName").val(response.data.name);
-            $("#editContact").val(response.data.contact);
+          $("#editEmail").val(response.data.email);
+          $("#editName").val(response.data.name);
+          $("#editContact").val(response.data.contact);
         }
       })
       .catch(function(error) {
         toastr.error(error, "Error", { timeOut: 5000 });
       });
+
+    $("#editUser").submit(function() {
+      if (!formValidate.valid()) return false;
+      var dataString = {
+        name: $("#editName").val(),
+        contact: $("#editContact").val(),
+        password: $("#password").val()
+      };
+      var data = JSON.stringify(dataString);
+      axios
+        .put("http://localhost:3000/users/5f0c36d629f49f52dd0bf23f", data, {
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(r => toastr.success('Editado com sucesso', 'Sucesso', {timeOut: 5000}))
+        .catch(e => toastr.error(e, 'Error', {timeOut: 5000}));
+      return false;
+    });
   }
 </script>
