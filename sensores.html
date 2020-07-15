@@ -595,24 +595,26 @@
               toastr.error(error, 'Error', {timeOut: 5000});
             })
             .then(function() {
+              $("#editSensor").unbind('submit');
               $("#editSensor").submit(function(){
                 if (!formValidate.valid()) return false;
                 var dataString = {
                   'name': $("#editName").val(),
-                  'contact': $("#editContact").val(),
-                  'permissionLevel' : $("#editPermission").val()
+                  'sensorType' : $("#editTypology").val(),
+                  'userId' : $("#editUser").val()
                 }
                 var data = JSON.stringify(dataString);
-                $.ajax({
-                      url: 'http://localhost:3000/sensor/' + idSensor,  
-                      type: 'PUT',
-                      data: data,
-                      dataType: 'json',
-                      success: function(data) {
-                          console.log(data);
-                      },
-                  });
-                return false;
+            axios.put('http://localhost:3000/sensor/'+idSensor, data, {
+              headers: { "Content-Type": "application/json" }
+            })
+            .then(r => toastr.success('Editado com sucesso', 'Sucesso', {timeOut: 5000}),
+            $("#modal-edit").modal('hide'),
+            )
+            .catch(e => toastr.error(e, 'Error', {timeOut: 5000}))
+            .then(() => {
+              getSensors();
+              })
+              return false;
               });
             });
         });
@@ -630,17 +632,18 @@
               'apiKey' : $("#addKey").val()
             }
                 var data = JSON.stringify(dataString);
-                  $.ajax({
-                        type: "POST",
-                        url: "http://localhost:3000/sensor",
-                        data: JSON.stringify({data:"test"}),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function(result) {
-                          console.log(result);
-                        }
-                      });
-                return false;
+            axios.post('http://localhost:3000/sensor', data, {
+              headers: { "Content-Type": "application/json" }
+            })
+            .then(r => toastr.success('Adicionado com sucesso', 'Sucesso', {timeOut: 5000}),
+            $("#modal-add").modal('hide'),
+            )
+            .catch(e => toastr.error(e, 'Error', {timeOut: 5000}))
+            .then(() => {
+              getSensors();
+              $("#addSensor")[0].reset();
+              })
+              return false;
               });
     });
     

@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="plugins/toastr/toastr.min.css" />
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="dist/css/datepicker.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
@@ -230,16 +232,22 @@
                 <!-- text input -->
                 <div class="form-group">
                   <label>Sensor</label>
-                  <select>
-
+                  <select class="form-control" id="addSensor" name="addSensor" style="width: 100%;">
+                    
                   </select>
                 </div>
               </div>
               <div class="col-sm-6">
-                <label>Data de Início
-                </label>
-                <input type="text" class="form-control" name="dateInit" id="dateInit" placeholder="Data de início de medição...">
-              </div>
+              <!-- Date -->
+              <div class="form-group">
+                  <label>Data de Início</label>  
+                  <div class="input-group date">
+                    <input type="text" class="form-control pull-right" id="datepicker">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+                </div>
             </div>
             <div class="row">
               <div class="col-sm-12">
@@ -292,6 +300,8 @@
 <!-- daterangepicker -->
 <script src="plugins/moment/moment.min.js"></script>
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="dist/js/datepicker.min.js"></script>
+<script src="plugins/moment/moment-with-locales.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
@@ -299,6 +309,8 @@
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
+<script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="plugins/toastr/toastr.min.js"></script>
 <script src="dist/js/adminlte.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
@@ -313,6 +325,28 @@
    $(function() {
      getSensores();
 
+     $('#datepicker').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: 'dd/mm/yyyy',
+      endDate: new Date(),
+      language: 'pt-BR'
+    });
+
+    var data = new Date(),
+        dia  = data.getDate().toString().padStart(2, '0'),
+        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano  = data.getFullYear();
+    $("#datepicker").val(dia+"/"+mes+"/"+ano);
+
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000
+  });
+
   if(Cookies.get('name')){
     console.log("Siga");
   }else{
@@ -324,11 +358,16 @@
   });
 
   function getSensores(){
-      axios.get('http://localhost:3000/sensores').then(response => {
-        for (var i = 0; i < response.data.length; i++) {
-        $('#editTipo').append('<option value=' + response.data[i]["_id"] +'>' + response.data[i]["name"] + '</option>');
-        }
-      });
+    axios
+        .get("http://localhost:3000/sensor/find/active", {
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(r => { 
+            for (var i = 0; i < r.data.length; i++) {
+            $('#addSensor').append('<option value=' + r.data[i]["_id"] +'>' + r.data[i]["name"] + '</option>');
+                  }
+                  })
+        .catch(e => toastr.error(e, 'Error', {timeOut: 5000}));
     }
 });
 </script>

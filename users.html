@@ -315,7 +315,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary" id="saveEdit">Submeter</button>
+              <button type="submit" class="btn btn-primary" id="saveEdit">Submeter</button>
             </div>
           </form>   
           </div>
@@ -451,6 +451,7 @@
     $('.select2').select2();
 
     var formValidate = $('#editUser').validate({
+      debug: true,
     rules: {
       editName: {
         required: true,
@@ -558,8 +559,6 @@
   });
 
     function getUsers(){
-      $("#utiizadores").DataTable().destroy();
-      $("#utilizadores tbody").empty();
     axios.get('http://localhost:3000/users')
       .then(response => {
         $("#utilizadores tbody").empty();
@@ -570,10 +569,7 @@
         }
         $("#bodyUsers").append(tr_str);
         $('#utilizadores').DataTable({
-      //    dom: 'Bfrtip',
-      //    buttons: [
-      //     'csvHtml5'
-      //  ],
+          "retrieve": true,
           "paging": true,
           "lengthChange": true,
           "searching": true,
@@ -601,7 +597,9 @@
               toastr.error(error, 'Error', {timeOut: 5000});
             })
             .then(function() {
+              $("#editUser").unbind('submit');
               $("#editUser").submit(function(){
+                console.log("Aqui");
                 if (!formValidate.valid()) return false;
                 var dataString = {
                 'name': $("#editName").val(),
@@ -614,13 +612,13 @@
                   headers: { "Content-Type": "application/json" }
                 })
                 .then(r => toastr.success('Editado com sucesso', 'Sucesso', {timeOut: 5000}),
+                $("#modal-edit").modal('hide'),
                 )
                 .catch(e => toastr.error(e, 'Error', {timeOut: 5000}))
                 .then(() => {
-                  getUsers();
-                  $("#modal-add").modal('hide');
+                    getUsers();
+                    })
                   return false;
-                })
                   });
             });
         });
@@ -642,12 +640,14 @@
               headers: { "Content-Type": "application/json" }
             })
             .then(r => toastr.success('Adicionado com sucesso', 'Sucesso', {timeOut: 5000}),
-            getUsers()
+            $("#modal-add").modal('hide'),
             )
-            .catch(e => toastr.error(e, 'Error', {timeOut: 5000}));
-            $("#modal-add").modal('hide');
-            return false;
-        });
+            .catch(e => toastr.error(e, 'Error', {timeOut: 5000}))
+            .then(() => {
+              getUsers();
+              })
+              return false;
+              });
       });
 
 
