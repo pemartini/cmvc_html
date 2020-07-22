@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="dist/img/logo-cmvc.png" type="image/x-icon" />
   <title>CMVC</title>
+  <script type="text/javascript">
+    if(localStorage.getItem('tok')){
+      setTimeout(function() {document.location.href = "/cmvc/mapa.html";});
+    }
+  </script>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -159,20 +164,24 @@ function setCookie(name, value, daysToLive) {
 
   $("#login").submit(function(){
     if (!formValidate.valid()) return false;
-    //setTimeout(function() {document.location.href = "http://localhost/cmvc/mapa.html"; }, 500);
-    console.log("Entrou");
-    axios.post('http://localhost:3000/auth', {
-        email: $("#username").val(),
-        password: $("#password").val()
-      }, instance)
-      .then(function (response) {
-        Cookies.set('name', response.data.token, { expires: 60 / 1440, path: '' });
-        setTimeout(function() {document.location.href = "/cmvc/mapa.html";}, 500);
-      })
-      .catch(function (error) {
-        toastr.error("Credenciais inválidas", 'Não autorizado', {timeOut: 5000});
-        document.getElementById("login").reset();
-      });
+          var dataString = {           
+              "email": $("#username").val(),
+              "password": $("#password").val()
+            }
+            var data = JSON.stringify(dataString);
+            axios.post('http://localhost:3000/auth', data, {
+              headers: { "Content-Type": "application/json" }
+            })
+            .then(function (response) {
+                // handle success
+                localStorage.setItem('tok', response.data.token);
+                localStorage.setItem('perm', response.data.perm);
+                setTimeout(function() {document.location.href = "/cmvc/mapa.html";}, 500);
+              })
+              .catch(function (error) {
+                toastr.error("Falha na autenticação", 'Erro', {timeOut: 5000});
+                $("#login")[0].reset()
+              });
     return false;
   });
 

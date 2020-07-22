@@ -121,27 +121,9 @@ var MyCustomMarker = L.Icon.Default;
 		var type = e.layerType,
 		  layer = e.layer;	  
 		if (type === 'marker') {
-			console.log(layer);			
 		$($("#lon").val(layer.getLatLng().lng));
 		$($("#lat").val(layer.getLatLng().lat));
-		$("#modal-add").modal('show');		
-		$("#modal-add").submit(function(){
-			if (!formValidate.valid()) return false;
-			var dataString = {
-				name: $("#editName").val(),
-				contact: $("#editContact").val(),
-				password: $("#password").val()
-			};
-			var data = JSON.stringify(dataString);
-			axios
-				.put("http://localhost:3000/users/5f0c36d629f49f52dd0bf23f", data, {
-				headers: { "Content-Type": "application/json" }
-				})
-				.then(r => toastr.success('Editado com sucesso', 'Sucesso', {timeOut: 5000}))
-				.catch(e => toastr.error(e, 'Error', {timeOut: 5000}));
-			return false;
-		});
-		  layer.bindPopup('A popup!');
+		$("#modal-add").modal('show');
 		}
 		else if(type === 'polygon'){
 			layer.bindPopup('A polygon!');
